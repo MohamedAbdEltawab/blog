@@ -27,7 +27,7 @@
 
 
 
-               <form method="post" action="/posts/show?id=<?=$post->id?>">
+               <form method="post" action="/posts/show/<?=$post->id?>">
                        <input type="text" name="comment" placeholder="Your comment here" required="">
                        <button>Add Comment</button>
                </form>

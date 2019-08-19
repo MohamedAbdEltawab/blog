@@ -13,12 +13,12 @@ class CommentsController extends Controller
       /**
       *   make a comment to post_id
       */
-      public function store()
+      public function store($vars)
       {
 
           session_start();
 
-          $post_id = $_GET['id'];
+          $post_id = $vars['id'];
 
           $user_id = $_SESSION['user_id'];
 

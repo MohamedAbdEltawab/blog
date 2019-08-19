@@ -44,12 +44,12 @@ class PostsController extends Controller
        }
 
 
-       public function show()
+       public function show($vars)
        {
-        
+            //die(var_dump($vars['id']));        
             session_start();
 
-            $id = $_GET['id'];
+            $id = $vars['id'];
 
             $pdo = \Connection::make(App::get('config')['database']);
 
@@ -57,7 +57,7 @@ class PostsController extends Controller
 
             $post = array_shift($post);
 
-            $comment = new Comment($pdo
+            $comment = new Comment($pdo);
           
             $comments = $comment->alls($id);
 

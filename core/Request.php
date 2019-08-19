@@ -12,10 +12,14 @@ class Request
 	{
 
 
-		return trim(
-			parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'
+		
 
-		);
+		// $uri = trim(
+		// 	parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'
+
+		// );
+
+		return $uri = trim(str_replace(dirname($_SERVER['SCRIPT_NAME']), '', $_SERVER['REQUEST_URI']), '/' );
 	
 	}
 
