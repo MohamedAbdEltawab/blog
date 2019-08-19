@@ -1,5 +1,5 @@
 <?php
-
+use App\Core\Router;
 
 /*
 |
@@ -11,24 +11,24 @@
 |
 */
 
-$router->get('', 'PagesController@index');
-$router->get('login', 'PagesController@login');
-$router->get('register', 'PagesController@register');
+Router::get('', 'PagesController@index');
+Router::get('login', 'PagesController@login');
+Router::get('register', 'PagesController@register');
 
 
-$router->post('login', 'AuthController@login');
-$router->post('registeruser', 'AuthController@register');
-$router->get('logout', 'AuthController@logout');
+Router::post('login', 'AuthController@login');
+Router::post('registeruser', 'AuthController@register');
+Router::get('logout', 'AuthController@logout');
 
 
-$router->get('posts', 'PostsController@index');
-$router->get('posts/create', 'PostsController@create');
-$router->post('posts/store', 'PostsController@store');
+Router::get('posts', 'PostsController@index');
+Router::get('posts/create', 'PostsController@create');
+Router::post('posts/store', 'PostsController@store');
 
 
-$router->get('posts/show/{id}', 'PostsController@show');
-$router->post('posts/show/{id}', 'CommentsController@store');
+Router::get('posts/show/{id}', 'PostsController@show');
+Router::post('posts/show/{id}', 'CommentsController@store');
 
 
-$router->get('profile', 'ProfileController@show');
-$router->post('profile', 'ProfileController@update');
+Router::get('profile', 'ProfileController@show');
+Router::post('profile', 'ProfileController@update');

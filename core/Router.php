@@ -8,7 +8,7 @@ class Router
 
 {
 
-	protected $routes = [
+	protected static $routes = [
 
 		'GET' => [],
 		'POST' => []
@@ -26,17 +26,17 @@ class Router
 	}
 
 
-	public function get($uri, $controller)
+	public static function get($uri, $controller)
 	{
 
-		$this->routes['GET'][$uri] = $controller;
+		self::$routes['GET'][$uri] = $controller;
 	
 	}
 
 	public function post($uri, $controller)
 	{
 
-		$this->routes['POST'][$uri] = $controller;
+		self::$routes['POST'][$uri] = $controller;
 	
 	}
 
@@ -46,15 +46,15 @@ class Router
 
 	{
 
-		if(array_key_exists($uri, $this->routes[$requestType])){
+		if(array_key_exists($uri, self::$routes[$requestType])){
 
 			return $this->callAction(
 
-			...explode("@", $this->routes[$requestType][$uri])
+			...explode("@", self::$routes[$requestType][$uri])
 
 			);
 		}else{
-			foreach ($this->routes[$requestType] as $key => $val){
+			foreach (self::$routes[$requestType] as $key => $val){
 				$pattern = preg_replace('#\(/\)#', '/?', $key);
 				$pattern = "@^" .preg_replace('/{([a-zA-Z0-9\_\-]+)}/', '(?<$1>[a-zA-Z0-9\_\-]+)', $pattern). "$@D";
 				preg_match($pattern, $uri, $matches);
